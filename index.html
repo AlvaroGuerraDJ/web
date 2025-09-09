@@ -14,8 +14,8 @@
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #2d2d2d;
+            background: linear-gradient(135deg, #00843d 0%, #4a7c4e 100%);
             min-height: 100vh;
             padding: 20px;
         }
@@ -30,16 +30,17 @@
         }
         
         header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #00843d 0%, #006830 100%);
             color: white;
             padding: 40px;
             text-align: center;
+            border-bottom: 5px solid #4a7c4e;
         }
         
         h1 {
             font-size: 2.5em;
             margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
         
         .subtitle {
@@ -61,17 +62,18 @@
         }
         
         .index {
-            background: #f8f9fa;
+            background: #f0f8f4;
             border-radius: 15px;
             padding: 25px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            border: 2px solid #00843d;
         }
         
         .index h2 {
-            color: #667eea;
+            color: #00843d;
             margin-bottom: 20px;
             font-size: 1.5em;
-            border-bottom: 3px solid #667eea;
+            border-bottom: 3px solid #00843d;
             padding-bottom: 10px;
         }
         
@@ -91,12 +93,12 @@
             content: counter(section) ".";
             position: absolute;
             left: -20px;
-            color: #764ba2;
+            color: #006830;
             font-weight: bold;
         }
         
         .index a {
-            color: #333;
+            color: #2d2d2d;
             text-decoration: none;
             display: block;
             padding: 8px 12px;
@@ -106,10 +108,10 @@
         }
         
         .index a:hover {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #00843d 0%, #006830 100%);
             color: white;
             transform: translateX(5px);
-            box-shadow: 0 3px 10px rgba(102, 126, 234, 0.3);
+            box-shadow: 0 3px 10px rgba(0, 132, 61, 0.3);
         }
         
         main {
@@ -124,11 +126,11 @@
             border-radius: 15px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.08);
             scroll-margin-top: 20px;
-            border-left: 4px solid #667eea;
+            border-left: 4px solid #00843d;
         }
         
         section h2 {
-            color: #667eea;
+            color: #00843d;
             margin-bottom: 20px;
             font-size: 1.8em;
             display: flex;
@@ -138,20 +140,20 @@
         
         section h2::before {
             content: "▶";
-            color: #764ba2;
+            color: #4a7c4e;
             font-size: 0.7em;
         }
         
         .objetivo {
-            background: #e8f4fd;
+            background: #e8f5ec;
             padding: 15px;
             border-radius: 10px;
             margin-bottom: 20px;
-            border-left: 4px solid #667eea;
+            border-left: 4px solid #00843d;
         }
         
         .objetivo strong {
-            color: #667eea;
+            color: #006830;
         }
         
         .funciones {
@@ -159,7 +161,7 @@
         }
         
         .funciones h3 {
-            color: #764ba2;
+            color: #006830;
             margin-bottom: 15px;
             font-size: 1.2em;
         }
@@ -174,22 +176,22 @@
         }
         
         .observaciones {
-            background: #fff3cd;
+            background: #fff8e8;
             padding: 15px;
             border-radius: 10px;
-            border-left: 4px solid #ffc107;
+            border-left: 4px solid #4a7c4e;
             margin-top: 20px;
         }
         
         .observaciones strong {
-            color: #856404;
+            color: #2d2d2d;
         }
         
         .back-to-top {
             position: fixed;
             bottom: 30px;
             right: 30px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #00843d 0%, #006830 100%);
             color: white;
             width: 50px;
             height: 50px;
@@ -208,10 +210,11 @@
         }
         
         .tarjeta-info {
-            background: #e8f4fd;
+            background: #e8f5ec;
             padding: 15px;
             border-radius: 10px;
             margin: 15px 0;
+            border: 1px solid #00843d;
         }
         
         .tarjeta-info ul {
@@ -223,9 +226,15 @@
             padding: 5px 0;
         }
         
-        .verde { color: #28a745; font-weight: bold; }
-        .amarilla { color: #ffc107; font-weight: bold; }
+        .verde { color: #00843d; font-weight: bold; }
+        .amarilla { color: #f5a623; font-weight: bold; }
         .blanca { color: #6c757d; font-weight: bold; }
+        
+        .dia-importante {
+            color: #dc3545;
+            font-weight: bold;
+            text-decoration: underline;
+        }
         
         @media (max-width: 768px) {
             .content-wrapper {
@@ -393,12 +402,12 @@
                             <li>Reposición del material, pasando previamente el material del fondo a la primera línea y rellenando el fondo.</li>
                             <li>Atención especial los días previos a la lectura y entrega de material:
                                 <ul>
-                                    <li>La lectura se realiza los miércoles.</li>
-                                    <li>El martes se debe comprobar el material faltante y voltear las tarjetas para su lectura (pedido).</li>
+                                    <li>La lectura se realiza los <span class="dia-importante">miércoles</span>.</li>
+                                    <li>El <span class="dia-importante">martes</span> se debe comprobar el material faltante y voltear las tarjetas para su lectura (pedido).</li>
                                 </ul>
                             </li>
                             <li>Reposición de sueros en sus cajones.</li>
-                            <li>Preparación y mantenimiento del líquido enzimático.</li>
+                            <li>Preparación y mantenimiento del líquido enzimático. Ajustar dosis según documento adjunto, que deberá ser firmado por el personal que realice el procedimiento.</li>
                             <li>Día de reposición de tarjetas leídas: viernes.</li>
                             <li>Ayuda y organización del material recepcionado.</li>
                         </ul>
