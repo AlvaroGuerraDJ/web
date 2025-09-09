@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PNT TCAE - Unidad de Urgencias | Hospital de Puente Genil</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .subtitle {
+            font-size: 1.2em;
+            opacity: 0.95;
+        }
+        
+        .content-wrapper {
+            display: flex;
+            gap: 30px;
+            padding: 30px;
+        }
+        
+        nav {
+            flex: 0 0 300px;
+            position: sticky;
+            top: 20px;
+            height: fit-content;
+        }
+        
+        .index {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+        
+        .index h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+        }
+        
+        .index ol {
+            list-style: none;
+            counter-reset: section;
+        }
+        
+        .index li {
+            counter-increment: section;
+            margin-bottom: 12px;
+            position: relative;
+            padding-left: 10px;
+        }
+        
+        .index li::before {
+            content: counter(section) ".";
+            position: absolute;
+            left: -20px;
+            color: #764ba2;
+            font-weight: bold;
+        }
+        
+        .index a {
+            color: #333;
+            text-decoration: none;
+            display: block;
+            padding: 8px 12px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-size: 0.95em;
+        }
+        
+        .index a:hover {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            transform: translateX(5px);
+            box-shadow: 0 3px 10px rgba(102, 126, 234, 0.3);
+        }
+        
+        main {
+            flex: 1;
+            max-width: 800px;
+        }
+        
+        section {
+            background: white;
+            margin-bottom: 30px;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            scroll-margin-top: 20px;
+            border-left: 4px solid #667eea;
+        }
+        
+        section h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        section h2::before {
+            content: "▶";
+            color: #764ba2;
+            font-size: 0.7em;
+        }
+        
+        .objetivo {
+            background: #e8f4fd;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .objetivo strong {
+            color: #667eea;
+        }
+        
+        .funciones {
+            margin-bottom: 20px;
+        }
+        
+        .funciones h3 {
+            color: #764ba2;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+        
+        .funciones ul {
+            margin-left: 25px;
+        }
+        
+        .funciones li {
+            margin-bottom: 10px;
+            line-height: 1.8;
+        }
+        
+        .observaciones {
+            background: #fff3cd;
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 4px solid #ffc107;
+            margin-top: 20px;
+        }
+        
+        .observaciones strong {
+            color: #856404;
+        }
+        
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            transition: transform 0.3s ease;
+            font-size: 1.5em;
+        }
+        
+        .back-to-top:hover {
+            transform: scale(1.1);
+        }
+        
+        .tarjeta-info {
+            background: #e8f4fd;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+        
+        .tarjeta-info ul {
+            list-style: none;
+            margin-left: 0;
+        }
+        
+        .tarjeta-info li {
+            padding: 5px 0;
+        }
+        
+        .verde { color: #28a745; font-weight: bold; }
+        .amarilla { color: #ffc107; font-weight: bold; }
+        .blanca { color: #6c757d; font-weight: bold; }
+        
+        @media (max-width: 768px) {
+            .content-wrapper {
+                flex-direction: column;
+            }
+            
+            nav {
+                position: static;
+                flex: 1;
+            }
+            
+            h1 {
+                font-size: 1.8em;
+            }
+            
+            section {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>PNT TCAE - Unidad de Urgencias</h1>
+            <p class="subtitle">Hospital de Puente Genil</p>
+        </header>
+        
+        <div class="content-wrapper">
+            <nav>
+                <div class="index">
+                    <h2>📋 Índice</h2>
+                    <ol>
+                        <li><a href="#criticos">Críticos</a></li>
+                        <li><a href="#triaje">Triaje</a></li>
+                        <li><a href="#consultas">Consultas Médicas</a></li>
+                        <li><a href="#observacion">Observación</a></li>
+                        <li><a href="#enfermeria">Enfermería A y B</a></li>
+                        <li><a href="#almacen">Almacén</a></li>
+                        <li><a href="#pediatrica">Zona Pediátrica</a></li>
+                        <li><a href="#trauma">Trauma</a></li>
+                        <li><a href="#terapias">Zona de Terapias Asistidas</a></li>
+                        <li><a href="#limpieza">Área de Limpieza / Sucio</a></li>
+                    </ol>
+                </div>
+            </nav>
+            
+            <main>
+                <section id="criticos">
+                    <h2>1. Críticos</h2>
+                    <div class="objetivo">
+                        <strong>Objetivo:</strong> Asegurar el correcto funcionamiento del área crítica y la disponibilidad del material y aparataje necesario para la atención inmediata de pacientes con compromiso vital.
+                    </div>
+                    <div class="funciones">
+                        <h3>Funciones del TCAE:</h3>
+                        <ul>
+                            <li>Comprobación al inicio de cada turno del funcionamiento de aspiradores fijos y portátiles, monitor EKG y caudalímetros de bajo y alto flujo.</li>
+                            <li>Revisión y reposición de lencería y material fungible.</li>
+                            <li>Revisión del carro de parada: lencería, electrodos, material de oxigenoterapia, etc.</li>
+                            <li>Tras la utilización de la sala, el personal TCAE se encargará de reponer todo el material fungible utilizado, aspiradores, sueroterapia, limpieza de monitor y cableado y se encargará de limpiar y esterilizar instrumental utilizado.</li>
+                            <li>Desmontaje, limpieza y montaje de ambú (instrucciones disponibles).</li>
+                        </ul>
+                    </div>
+                    <div class="observaciones">
+                        <strong>Observaciones:</strong> Cualquier incidencia debe comunicarse de inmediato al personal de enfermería y/o supervisión.
+                    </div>
+                </section>
+                
+                <section id="triaje">
+                    <h2>2. Triaje</h2>
+                    <div class="objetivo">
+                        <strong>Objetivo:</strong> Asegurar que el espacio de triaje se mantenga funcional, limpio y correctamente abastecido para la evaluación inicial de los pacientes.
+                    </div>
+                    <div class="funciones">
+                        <h3>Funciones del TCAE:</h3>
+                        <ul>
+                            <li>Reposición diaria o tras cada turno del material necesario en la zona de triaje.</li>
+                            <li>Revisión periódica de caducidades del material almacenado y en uso.</li>
+                        </ul>
+                    </div>
+                    <div class="observaciones">
+                        <strong>Observaciones:</strong> Todo material caducado o en mal estado debe ser retirado y comunicado para su reposición inmediata. La zona debe permanecer despejada y limpia, lista para una atención ágil y segura.
+                    </div>
+                </section>
+                
+                <section id="consultas">
+                    <h2>3. Consultas Médicas</h2>
+                    <div class="objetivo">
+                        <strong>Objetivo:</strong> Mantener las consultas médicas abastecidas, ordenadas y preparadas para una atención eficiente, garantizando soporte básico al equipo médico y de enfermería.
+                    </div>
+                    <div class="funciones">
+                        <h3>Funciones del TCAE:</h3>
+                        <ul>
+                            <li>Comprobación y reposición diaria del material básico en cada consulta: lencería, guantes (3 tallas), depresores, conos de otoscopio, gasas no estériles.</li>
+                            <li>Dispensadores de solución hidroalcohólica.</li>
+                            <li>Limpieza y orden del mobiliario y entorno de trabajo.</li>
+                            <li>Realización de tratamiento y limpieza ocular si lo requiere el médico del turno.</li>
+                        </ul>
+                    </div>
+                    <div class="observaciones">
+                        <strong>Observaciones:</strong> Ante cualquier necesidad o variación en el material habitual, se atenderán las indicaciones del profesional responsable.
+                    </div>
+                </section>
+                
+                <section id="observacion">
+                    <h2>4. Observación</h2>
+                    <div class="objetivo">
+                        <strong>Objetivo:</strong> Mantener el área de observación operativa y abastecida para la atención prolongada de pacientes, asegurando limpieza y funcionalidad.
+                    </div>
+                    <div class="funciones">
+                        <h3>Funciones del TCAE:</h3>
+                        <ul>
+                            <li>Reposición de fungible en pared y carro.</li>
+                            <li>Reposición de sueros y de lencería.</li>
+                            <li>Comprobación de monitores y de sus elementos necesarios.</li>
+                            <li>Retirada de lencería usada a su punto de recogida.</li>
+                            <li>Comprobación de aspiradores.</li>
+                            <li>Mantenimiento y limpieza de sillones, camillas y superficies de trabajo.</li>
+                        </ul>
+                    </div>
+                    <div class="observaciones">
+                        <strong>Observaciones:</strong> Se firmará diariamente el documento ubicado en la puerta por el TCAE del turno una vez realizadas las tareas.
+                    </div>
+                </section>
+                
+                <section id="enfermeria">
+                    <h2>5. Enfermería A y B</h2>
+                    <div class="objetivo">
+                        <strong>Objetivo:</strong> Apoyar en el mantenimiento y organización de las zonas de enfermería para facilitar la atención eficiente y segura.
+                    </div>
+                    <div class="funciones">
+                        <h3>Funciones del TCAE:</h3>
+                        <ul>
+                            <li>Reposición de material fungible.</li>
+                            <li>Reposición de lencería.</li>
+                            <li>Orden y limpieza de la zona de trabajo.</li>
+                        </ul>
+                        
+                        <h3>Enfermería B – Vitrina pediátrica:</h3>
+                        <ul>
+                            <li>Comprobación de medicación pediátrica (fechas de apertura y reposición).</li>
+                            <li>Bandeja siempre operativa de vía circulatoria pediátrica.</li>
+                        </ul>
+                        
+                        <h3>Enfermería B – Carro de curas:</h3>
+                        <ul>
+                            <li>Mantenimiento y reposición de fungible.</li>
+                            <li>Control de instrumental quirúrgico.</li>
+                        </ul>
+                    </div>
+                    <div class="observaciones">
+                        <strong>Nota:</strong> El instrumental quirúrgico pendiente de esterilizar se entregará cada mañana en mano a la zona de quirófanos con la documentación correspondiente y se recogerá el material pendiente del día anterior. En fines de semana, se entregará al supervisor de guardia para su gestión.
+                    </div>
+                </section>
+                
+                <section id="almacen">
+                    <h2>6. Almacén</h2>
+                    <div class="objetivo">
+                        <strong>Objetivo:</strong> Gestionar el stock y mantenimiento del material almacenado para asegurar la disponibilidad y correcta conservación.
+                    </div>
+                    <div class="funciones">
+                        <h3>Funciones del TCAE:</h3>
+                        <ul>
+                            <li>Orden, limpieza y mantenimiento del llenado de cajones.</li>
+                            <li>Reposición del material, pasando previamente el material del fondo a la primera línea y rellenando el fondo.</li>
+                            <li>Atención especial los días previos a la lectura y entrega de material:
+                                <ul>
+                                    <li>La lectura se realiza los miércoles.</li>
+                                    <li>El martes se debe comprobar el material faltante y voltear las tarjetas para su lectura (pedido).</li>
+                                </ul>
+                            </li>
+                            <li>Reposición de sueros en sus cajones.</li>
+                            <li>Preparación y mantenimiento del líquido enzimático.</li>
+                            <li>Día de reposición de tarjetas leídas: viernes.</li>
+                            <li>Ayuda y organización del material recepcionado.</li>
+                        </ul>
+                        
+                        <div class="tarjeta-info">
+                            <strong>Tipos de tarjetas identificativas:</strong>
+                            <ul>
+                                <li><span class="verde">VERDE:</span> indica estocaje completo</li>
+                                <li><span class="amarilla">AMARILLA:</span> indica necesidad de reposición (observar estocaje en tarjeta)</li>
+                                <li><span class="blanca">BLANCA:</span> tarjeta con una "T" mayúscula negra, indica material de compra. No voltear esta tarjeta y comunicar necesidad al supervisor</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="observaciones">
+                        <strong>Observaciones:</strong> Se firmará diariamente el documento que se encuentra en la puerta del almacén por el TCAE del turno tras realizar las tareas.
+                    </div>
+                </section>
+                
+                <section id="pediatrica">
+                    <h2>7. Zona Pediátrica</h2>
+                    <div class="objetivo">
+                        <strong>Objetivo:</strong> Mantener la zona pediátrica en condiciones óptimas de funcionamiento, asegurando la disponibilidad de material específico y un entorno preparado para la atención de pacientes pediátricos.
+                    </div>
+                    <div class="funciones">
+                        <h3>Funciones del TCAE:</h3>
+                        <ul>
+                            <li>Organización general y mantenimiento de la zona pediátrica.</li>
+                            <li>Limpieza de superficies de trabajo y orden del área.</li>
+                            <li>Comprobación del correcto funcionamiento de aspiradores fijos y/o portátiles y disponibilidad y adecuación de cánulas de Guedel pediátricas en diferentes tamaños.</li>
+                            <li>Revisión periódica del estado del material pediátrico de emergencia según protocolo del centro.</li>
+                        </ul>
+                    </div>
+                    <div class="observaciones">
+                        <strong>Observaciones:</strong> La zona debe mantenerse especialmente limpia, tranquila y ordenada, adaptándose a las necesidades específicas de atención a menores. Cualquier carencia de material o fallo en equipos debe comunicarse de inmediato a enfermería.
+                    </div>
+                </section>
+                
+                <section id="trauma">
+                    <h2>8. Trauma</h2>
+                    <div class="objetivo">
+                        <strong>Objetivo:</strong> Garantizar que la zona de atención a traumatismos esté siempre limpia, operativa y debidamente equipada para una atención ágil y segura.
+                    </div>
+                    <div class="funciones">
+                        <h3>Funciones del TCAE:</h3>
+                        <ul>
+                            <li>Mantenimiento y reposición del material fungible utilizado habitualmente en la zona.</li>
+                            <li>Revisión de caducidades del material almacenado o en carros.</li>
+                            <li>Limpieza de la zona de trabajo tras cada uso según protocolo.</li>
+                            <li>Asegurar que todo esté ordenado y listo para su próxima utilización.</li>
+                        </ul>
+                    </div>
+                    <div class="observaciones">
+                        <strong>Observaciones:</strong> El material debe reponerse inmediatamente tras su uso para evitar demoras. Las incidencias o faltas de material deben comunicarse al personal de enfermería o supervisión.
+                    </div>
+                </section>
+                
+                <section id="terapias">
+                    <h2>9. Zona de Terapias Asistidas</h2>
+                    <div class="objetivo">
+                        <strong>Objetivo:</strong> Asegurar que la zona destinada a la administración de terapias especiales esté siempre limpia, ordenada y correctamente equipada.
+                    </div>
+                    <div class="funciones">
+                        <h3>Funciones del TCAE:</h3>
+                        <ul>
+                            <li>Mantenimiento y limpieza de la zona: desinfección tras cada uso.</li>
+                            <li>Reposición del material fungible y de lencería necesarios.</li>
+                            <li>Coordinación con personal celador para la colocación y retirada de camilla:
+                                <ul>
+                                    <li>Antes del procedimiento, solicitar colocación de camilla.</li>
+                                    <li>Tras la administración del tratamiento, avisar para retirada de camilla.</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="observaciones">
+                        <strong>Observaciones:</strong> La sala debe permanecer limpia, despejada y equipada para su uso inmediato.
+                    </div>
+                </section>
+                
+                <section id="limpieza">
+                    <h2>10. Área de Limpieza / Sucio</h2>
+                    <div class="objetivo">
+                        <strong>Objetivo:</strong> Garantizar la correcta limpieza y desinfección del material reutilizable, asegurando el uso adecuado del equipamiento destinado a esta función.
+                    </div>
+                    <div class="funciones">
+                        <h3>Funciones del TCAE:</h3>
+                        <ul>
+                            <li>Uso adecuado del aparato cuñero/desinfectador: limpieza y esterilización de cuñas, botellas y otros recipientes.</li>
+                            <li>Limpieza de material con líquido enzimático antes de enviar a esterilización.</li>
+                            <li>Revisión de niveles y buen funcionamiento de los equipos.</li>
+                        </ul>
+                    </div>
+                    <div class="observaciones">
+                        <strong>Observaciones:</strong> Cualquier fallo en el funcionamiento del equipo debe ser comunicado al personal responsable para su reparación o sustitución.
+                    </div>
+                </section>
+                
+                <section style="background: #f0f8f4; border-left: 4px solid #00843d;">
+                    <h2 style="color: #00843d;">📌 OTROS</h2>
+                    <p>Cada turno tiene asignado una revisión de caducidades de fungibles por área y mes que debe quedar firmado por todo el turno y en el que todo el personal TCAE debe colaborar pertenezca o no a un turno fijo.</p>
+                </section>
+            </main>
+        </div>
+        
+        <a href="#" class="back-to-top" title="Volver arriba">↑</a>
+    </div>
+</body>
+</html>
